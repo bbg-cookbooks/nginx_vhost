@@ -1,6 +1,6 @@
 def load_current_resource
   new_resource.log_dir
-  new_resource.nginx_dir.
+  new_resource.nginx_dir
   new_resource.upstream
   new_resource.servers
   new_resource.sockets
@@ -22,11 +22,13 @@ action :enable do
     end
   end
 
+  name = new_resource.name
+
   template "#{new_resource.nginx_dir}/sites-available/#{name}" do
     source "vhost.conf.erb"
     mode "0644"
     owner "root"
-    variables new_resource.instance_variables
+    variables new_resource.to_hash
     notifies     :reload, "service[nginx]"
   end
 

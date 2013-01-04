@@ -1,5 +1,5 @@
 {
-  "id":"example",
+  "id":"test",
   "root_path": "/tmp",
   "sockets": ["unix:/tmp/.sock"]
 }
